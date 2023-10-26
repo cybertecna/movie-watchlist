@@ -1,0 +1,61 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Exo 2', sans-serif;
+    margin: 0;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* FONTS */
+
+h1 {
+    font-size: 1.75rem;
+}
+
+.watchlist-nav {
+    font-size: 1.25rem;
+}
+
+
+/* HEADER */
+
+header {
+    background-image: url('./images/movietheater.jpg');
+    background-color: rgba(0, 0, 0, 0.429);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-blend-mode: multiply;
+    height: 30vh;
+    color: rgb(255, 245, 245);
+
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 4.5em;
+}
+
+
+
+.watchlist-nav {
+    color: rgb(255, 245, 245);
+    margin-top: 0.25em;
+
+}
+
+.watchlist-nav:hover {
+    text-decoration: underline;
+}
+
+
+/* BODY */
+
+body {
+    height: 70vh
+}
