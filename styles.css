@@ -76,7 +76,7 @@ h1 {
 
 
 .watchlist-nav {
-    color: rgb(232, 232, 232);
+    color: rgb(169, 169, 169);
     margin-top: 0.25em;
 
 }
@@ -173,6 +173,11 @@ input {
     opacity: 90%;
 }
 
+.cameraroll-explore {
+    margin-top: 10em;
+}
+
+
 @media (min-width: 550px) {
 
     form {
@@ -188,4 +193,9 @@ input {
     font-size: 1.35rem;
    }
 
+   .cameraroll-explore {
+    margin-top: 8.5em;
 }
+}
+
+
