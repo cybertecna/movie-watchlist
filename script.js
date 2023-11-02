@@ -17,12 +17,12 @@ searchForm.addEventListener('submit', function(e) {
 async function search() {
     const response = await fetch(`http://www.omdbapi.com/?apikey=7288476a&s=${userInput.value}&type=movie&r=json`)
     const moviesArray = await response.json()
-    explorePage.style.display="none"
 
     if(moviesArray.Error) {
         alert("There are too many results, please be more specific :)")
     
     } else if(moviesArray) {
+        explorePage.style.display="none"
         for(let movie of moviesArray.Search) {
             generateMovies(movie)
     
