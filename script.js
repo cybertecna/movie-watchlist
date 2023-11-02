@@ -2,29 +2,26 @@ const searchBtn = document.querySelector("#search-btn")
 const userInput = document.querySelector("#user-input")
 const searchForm = document.querySelector("#search-form")
 const searchedMovies = document.querySelector("#searched-movies")
-const explorePage = document.querySelector("#explore")
+const exploreMovies = document.querySelector("#explore")
 const html = []
-const popUp = document.querySelector("#pop-up")
-
-
+const errorPopUp = document.querySelector("#pop-up")
 
 
 searchForm.addEventListener('submit', function(e) {
     e.preventDefault()
-    search()
+    searchMovies()
     userInput.value = ""
 })
 
-
-async function search() {
+async function searchMovies() {
     const response = await fetch(`http://www.omdbapi.com/?apikey=7288476a&s=${userInput.value}&type=movie&r=json`)
     const moviesArray = await response.json()
 
     if(moviesArray.Error) {
-        popUp.style.display = 'flex'
+        errorPopUp.style.display = 'flex'
     
     } else if(moviesArray) {
-        explorePage.style.display="none"
+        exploreMovies.style.display="none"
         for(let movie of moviesArray.Search) {
             generateMovies(movie)
     
@@ -33,17 +30,13 @@ async function search() {
 
 }
 
-
 function generateMovies(movie) {
     fetch(`http://www.omdbapi.com/?apikey=7288476a&t=${movie.Title}&type=movie&plot=short&r=json`)
     .then(res => res.json())
     .then(movieData => {
-        html.push(
-            
-`           <div class="movie-data">
-
+        html.push(`   
+            <div class="movie-data">
                 <img src=${movieData.Poster} class="poster">
-                   
                 <div class="movie-info">
                     <h2 class="movie-title">${movieData.Title} <span class="rating"><img src='./images/star.png' class='star'>
                     ${movieData.imdbRating}</span></h2>
@@ -64,8 +57,9 @@ function generateMovies(movie) {
 
 }
 
+
 document.addEventListener('click', function(){
-        popUp.style.display = 'none'
+        errorPopUp.style.display = 'none'
  })
 
 
