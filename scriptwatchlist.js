@@ -21,9 +21,10 @@ function generateWatchlist(movieTitle) {
         .then(movieData => {
             watchlistHtml.push(`   
                 <div class="movie-data">
-                    <img src=${movieData.Poster} class="poster">
+                    <img src=${movieData.Poster} class="poster" alt='Official poster of the movie ${movieData.Title}'>
                     <div class="movie-info">
-                        <h2 class="movie-title">${movieData.Title} <span class="rating"><img src='./images/star.png' class='star'>
+                        <h2 class="movie-title">${movieData.Title} <span class="rating"><img src='./images/star.png' class='star'
+                        alt='A star icon'>
                         ${movieData.imdbRating}</span></h2>
                         <div class='runtime-genre-watchlist''>
                             <p><i>${movieData.Runtime}</i></p>

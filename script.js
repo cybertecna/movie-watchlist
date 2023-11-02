@@ -36,14 +36,14 @@ function generateMovies(movieTitle) {
     .then(movieData => {
         html.push(`   
             <div class="movie-data">
-                <img src=${movieData.Poster} class="poster">
+                <img src=${movieData.Poster} class="poster" alt='Official poster of the movie ${movieData.Title}'>
                 <div class="movie-info">
-                    <h2 class="movie-title">${movieData.Title} <span class="rating"><img src='./images/star.png' class='star'>
+                    <h2 class="movie-title">${movieData.Title} <span class="rating"><img src='./images/star.png' class='star' alt='A star icon'>
                     ${movieData.imdbRating}</span></h2>
                     <div class='runtime-genre-watchlist''>
                         <p><i>${movieData.Runtime}</i></p>
                         <p>${movieData.Genre}</p>
-                        <p class="add-to-watchlist" id ='${movieData.imdbID}' data-title='${movieData.Title}'><img src='./images/plus-symbol-button.png' class='icon'> Add to watchlist</p>
+                        <p class="add-to-watchlist" id ='${movieData.imdbID}' data-title='${movieData.Title}'><img src='./images/plus-symbol-button.png' class='icon' alt='A plus symbol icon'> Add to watchlist</p>
                     </div>
                     <p>${movieData.Plot}</p>
                     <p class="additional-info">Directed by: <i>${movieData.Director}</i><br>
@@ -72,7 +72,7 @@ document.addEventListener('click', function(e) {
         watchlistArray.push(e.target.dataset.title)
         localStorage.setItem('watchlist',JSON.stringify(watchlistArray))
         console.log(e.target.id)
-        document.getElementById(e.target.id).innerHTML = `<p class='added-to-the-watchlist'><img src='./images/check.png' class='icon'>
+        document.getElementById(e.target.id).innerHTML = `<p class='added-to-the-watchlist'><img src='./images/check.png' alt='A check icon' class='icon'>
                                                             Added to the watchlist</p>`
     }
 })

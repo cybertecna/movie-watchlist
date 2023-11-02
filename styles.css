@@ -295,7 +295,7 @@ p {
     max-height: 500px;
     max-width: 300px;
     margin: 0;
-
+    background: #919292;
    }
 
    .movie-title {
