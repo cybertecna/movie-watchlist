@@ -200,8 +200,57 @@ input {
 
 /* MOVIE  */
 
-.movie-poster {
-    width: 50px;
-    height: 50px
+.movie-data {
+    width: 80%;
+    margin: 0 auto;    
+    margin-top: 1em;
+    text-align: center;
+}
+
+.movie-info {
+    margin-top: 1em;
+    width: 100%;
+    font-size: 0.8rem;
+}
+
+.movie-title {
+    font-size: 1.25rem;
+
+}
+.poster {
+    width: 90%;
+    margin: 0 auto;
+}
+
+p {
+    margin-top: 0.25em;
+}
+
+.rating {
+    font-weight: normal;
+    font-size: 0.75rem;
+}
+
+.star {
+    width: 10px;
+
+}
+
+.add-btn {
+    width: 9px;
+}
+
+.plot {
+    color: rgb(40, 40, 40);
+}
+
+.add-to-watchlist {
+    color: rgb(176, 0, 0);
+    font-weight: bold;
+}
+
+.add-to-watchlist:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 

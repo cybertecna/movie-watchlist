@@ -2,6 +2,9 @@ const searchBtn = document.querySelector("#search-btn")
 const userInput = document.querySelector("#user-input")
 const searchForm = document.querySelector("#search-form")
 const searchedMovies = document.querySelector("#searched-movies")
+const explorePage = document.querySelector("#explore")
+const html = []
+
 
 
 searchForm.addEventListener('submit', function(e) {
@@ -14,31 +17,40 @@ searchForm.addEventListener('submit', function(e) {
 async function search() {
     const response = await fetch(`http://www.omdbapi.com/?apikey=7288476a&s=${userInput.value}&type=movie&r=json`)
     const moviesArray = await response.json()
-    let html = ''
-
+    explorePage.style.display="none"
     for(let movie of moviesArray.Search) {
-        fetch(`http://www.omdbapi.com/?apikey=7288476a&t=${movie.Title}&type=movie&plot=short&r=json`)
-        .then(res => res.json())
-        .then(movieData => {
-            html += `<div class='movie-poster'>
-                        <img id='poster' src='${movieData.Poster}'>
-                    </div>
-                    <div class='movie-data>
-                        <h2>${movieData.Title}</h2>
-                        <p>${movieData.imdbRating}</p>
-                        <p>${movieData.Runtime}</p>
-                        <p>${movieData.Genre}</p>
-                        <p>Add to watchlist</p>
-                        <p>${movieData.Plot}</p>
-                    </div>
-            `
-            console.log(movieData)
-            console.log(html)
-            searchedMovies.innerHTML = html
-        })
-        
+            generateMovies(movie)
+    
+        }
+    
     }
 
    
+
+function generateMovies(movie) {
+    fetch(`http://www.omdbapi.com/?apikey=7288476a&t=${movie.Title}&type=movie&plot=short&r=json`)
+    .then(res => res.json())
+    .then(movieData => {
+        console.log(movieData)
+        html.push(
+            
+`           <div class="movie-data">
+
+                <img src=${movieData.Poster} class="poster">
+                   
+                <div class="movie-info">
+                    <h2 class="movie-title">${movieData.Title} <span class="rating"><img src='./images/star.png' class='star'>
+                    ${movieData.imdbRating}</span></h2>
+                    <p>${movieData.Runtime}   ${movieData.Genre}</p>
+                    <p class='add-to-watchlist'><img src='./images/plus-symbol-button.png' class='add-btn'> Add to watchlist</p>
+                    <p class='plot'>${movieData.Plot}</p>
+                </div>
+
+
+            </div>
+`
+        )
+    })
+    .then(() => searchedMovies.innerHTML = html.join("") )
 
 }
