@@ -10,40 +10,6 @@ a {
 }
 
 
-/* FONTS */
-
-h1 {
-    font-size: 1.75rem;
-}
-
-.watchlist-nav {
-    font-size: 1.25rem;
-}
-
-
-@media (min-width: 550px) {
-
-    h1 {
-        font-size: 2rem;
-    }
-    
-    .watchlist-nav {
-        font-size: 1.5rem;
-    }
-    
-}
-
-@media (min-width: 1000px) {
-
-    h1 {
-        font-size: 3rem;
-    }
-    
-    .watchlist-nav {
-        font-size: 2rem;
-    }
-    
-}
 
 /* HEADER */
 
@@ -66,24 +32,27 @@ nav {
     max-width: 800px;
     margin: 0 auto;
 
-
 }
 
 h1 {
     margin-top: 2em;
+    font-size: 1.75rem;
 
 }
 
-
 .watchlist-nav {
-    color: rgb(169, 169, 169);
-    color: #919292;
+    font-size: 1.25rem;
+}
+
+.watchlist-nav{
+    color: rgb(226, 224, 224);
     margin-top: 0.25em;
 
 }
 
 .watchlist-nav:hover {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 
@@ -94,17 +63,31 @@ h1 {
     }
 
     h1 {
-        margin-top: 1.5em
+        margin-top: 1.5em;
+        font-size: 2rem;
+
     }
+    
+    .watchlist-nav {
+        font-size: 1.5rem;
+    }
+
+    
 
 }
 
 @media (min-width: 1000px) {
 
   h1 {
-    margin-top: 1em
+    margin-top: 1em;
+    font-size: 3rem;
+
   }
-    
+
+  .watchlist-nav {
+    font-size: 2rem;
+    }
+
 }
 
 /* MAIN */
