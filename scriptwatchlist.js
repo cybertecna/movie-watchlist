@@ -1,16 +1,21 @@
 const userWatchlist = document.querySelector('#user-movielist')
-const watchlistHtml = []
+let watchlistHtml = []
 const emptyWatchlist = document.querySelector('#empty-watchlist')
 let localStorageWatchlist = JSON.parse(localStorage.getItem('watchlist'))
 
-if(localStorageWatchlist) {
+if (localStorageWatchlist) {
     emptyWatchlist.style.display = 'none'
+    renderWatchlist()
+}
+
+function renderWatchlist(){
     for(const title in localStorageWatchlist) {
         generateWatchlist(`${localStorageWatchlist[title]}`)
         }
 }
 
 function generateWatchlist(movieTitle) {
+        watchlistHtml = []
         fetch(`http://www.omdbapi.com/?apikey=7288476a&t=${movieTitle}&type=movie&plot=short&r=json`)
         .then(res => res.json())
         .then(movieData => {
@@ -23,7 +28,6 @@ function generateWatchlist(movieTitle) {
                         <div class='runtime-genre-watchlist''>
                             <p><i>${movieData.Runtime}</i></p>
                             <p>${movieData.Genre}</p>
-                            <p class="remove-from-watchlist" data-title='${movieData.Title}'><img src='./images/remove.png' class='delete-btn'> Remove from your watchlist</p>
                         </div>
                         <p>${movieData.Plot}</p>
                         <p class="additional-info">Directed by: <i>${movieData.Director}</i><br>

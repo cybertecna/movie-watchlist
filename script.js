@@ -43,7 +43,7 @@ function generateMovies(movieTitle) {
                     <div class='runtime-genre-watchlist''>
                         <p><i>${movieData.Runtime}</i></p>
                         <p>${movieData.Genre}</p>
-                        <p class="add-to-watchlist" data-title='${movieData.Title}'><img src='./images/plus-symbol-button.png' class='add-btn'> Add to watchlist</p>
+                        <p class="add-to-watchlist" id ='${movieData.imdbID}' data-title='${movieData.Title}'><img src='./images/plus-symbol-button.png' class='icon'> Add to watchlist</p>
                     </div>
                     <p>${movieData.Plot}</p>
                     <p class="additional-info">Directed by: <i>${movieData.Director}</i><br>
@@ -71,7 +71,9 @@ document.addEventListener('click', function(e) {
     if(e.target.dataset.title) {
         watchlistArray.push(e.target.dataset.title)
         localStorage.setItem('watchlist',JSON.stringify(watchlistArray))
-
+        console.log(e.target.id)
+        document.getElementById(e.target.id).innerHTML = `<p class='added-to-the-watchlist'><img src='./images/check.png' class='icon'>
+                                                            Added to the watchlist</p>`
     }
 })
 

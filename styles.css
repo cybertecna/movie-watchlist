@@ -239,8 +239,7 @@ p {
 
 }
 
-.add-btn,
-.remove-btn {
+.icon {
     width: 9px;
 }
 
@@ -248,16 +247,25 @@ p {
     color: rgb(40, 40, 40);
 }
 
-.add-to-watchlist,
-.remove-from-watchlist {
+.add-to-watchlist {
     color: #f44336;
     font-weight: bold;
 }
 
-.add-to-watchlist:hover,
-.remove-from-watchlist:hover {
+.add-to-watchlist:hover {
     text-decoration: underline;
     cursor: pointer;
+}
+
+.added-to-the-watchlist {
+    color: #00ba00;
+    font-weight: bold;
+}
+
+.added-to-the-watchlist:hover  {
+    text-decoration: underline;
+    text-decoration-color: white;
+    cursor: auto;
 }
 
 .additional-info {
@@ -302,8 +310,7 @@ p {
     width: 12px
    }
 
-   .add-btn,
-   .remove-btn {
+   .icon {
     width: 11px;
    }
 
@@ -328,8 +335,7 @@ p {
      width: 15px
     }
     
-    .add-btn,
-    .delete-btn {
+    .icon {
         width: 14px;
     }
 
