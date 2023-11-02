@@ -220,10 +220,13 @@ input {
 .poster {
     width: 90%;
     margin: 0 auto;
+    max-height: 280px;
+    max-width: 200px;
+
 }
 
 p {
-    margin-top: 0.25em;
+    margin-top: 0.4em;
 }
 
 .rating {
@@ -254,3 +257,71 @@ p {
     cursor: pointer;
 }
 
+@media (min-width: 550px) {
+
+   .movie-data {
+    display: flex;
+    width: 80%;
+    text-align: left;
+    margin: 0 auto;
+    margin-top: 1em;
+    justify-content: center;
+
+   }
+
+   .movie-info {
+    width: 55%;
+    margin-top: 0;
+    margin-left: 1em;
+   }
+
+   .poster {
+    width: 40%;
+    max-height: 500px;
+    max-width: 300px;
+    margin: 0;
+
+   }
+
+   .movie-title {
+    font-size: 1.25rem;
+   }
+
+   p {
+    font-size: 0.9rem;
+    margin-top: 0.5em
+   }
+
+   .star {
+    width: 12px
+   }
+
+   .add-btn {
+    width: 11px;
+   }
+
+}
+
+@media (min-width: 1000px) {
+        
+    .searched-movies-long-plot {
+        display: block;
+    }
+
+    .movie-title {
+     font-size: 1.5rem;
+    }
+ 
+    p {
+     font-size: 1rem;
+     margin-top: 0.6em
+    }
+ 
+    .star {
+     width: 15px
+    }
+    
+    .add-btn {
+        width: 14px;
+    }
+ }

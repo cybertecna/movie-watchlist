@@ -41,9 +41,12 @@ function generateMovies(movie) {
                 <div class="movie-info">
                     <h2 class="movie-title">${movieData.Title} <span class="rating"><img src='./images/star.png' class='star'>
                     ${movieData.imdbRating}</span></h2>
-                    <p>${movieData.Runtime}   ${movieData.Genre}</p>
-                    <p class='add-to-watchlist'><img src='./images/plus-symbol-button.png' class='add-btn'> Add to watchlist</p>
-                    <p class='plot'>${movieData.Plot}</p>
+                    <div class='runtime-genre-watchlist'>
+                        <p><i>${movieData.Runtime}</i></p>
+                        <p>${movieData.Genre}</p>
+                        <p class="add-to-watchlist"><img src='./images/plus-symbol-button.png' class='add-btn'> Add to watchlist</p>
+                    </div>
+                    <p>${movieData.Plot}</p>
                 </div>
 
 
