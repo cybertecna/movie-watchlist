@@ -257,6 +257,9 @@ p {
     cursor: pointer;
 }
 
+.additional-info {
+    display: none;
+}
 @media (min-width: 550px) {
 
    .movie-data {
@@ -324,6 +327,13 @@ p {
     .add-btn {
         width: 14px;
     }
+
+    .additional-info {
+        display: block;
+        font-size: 0.9rem;
+        line-height: 1.5
+        
+    }
  }
 
  /* POP UP */
@@ -372,6 +382,7 @@ p {
     .pop-up {
         width: 40%;
     }
+
 
   
  }

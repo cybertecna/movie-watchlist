@@ -46,6 +46,12 @@ function generateMovies(movie) {
                         <p class="add-to-watchlist"><img src='./images/plus-symbol-button.png' class='add-btn'> Add to watchlist</p>
                     </div>
                     <p>${movieData.Plot}</p>
+                    <p class="additional-info">Directed by: <i>${movieData.Director}</i><br>
+                       Written by: <i>${movieData.Writer}</i><br>
+                       Actors: <i>${movieData.Actors}</i><br>
+                       Country: ${movieData.Country}<br>
+                       Box Office: ${movieData.BoxOffice}
+                       </p>
                 </div>
 
 
