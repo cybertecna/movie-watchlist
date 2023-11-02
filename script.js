@@ -4,6 +4,8 @@ const searchForm = document.querySelector("#search-form")
 const searchedMovies = document.querySelector("#searched-movies")
 const explorePage = document.querySelector("#explore")
 const html = []
+const popUp = document.querySelector("#pop-up")
+
 
 
 
@@ -19,7 +21,7 @@ async function search() {
     const moviesArray = await response.json()
 
     if(moviesArray.Error) {
-        alert("There are too many results, please be more specific :)")
+        popUp.style.display = 'flex'
     
     } else if(moviesArray) {
         explorePage.style.display="none"
@@ -61,3 +63,9 @@ function generateMovies(movie) {
     .then(() => searchedMovies.innerHTML = html.join("") )
 
 }
+
+document.addEventListener('click', function(){
+        popUp.style.display = 'none'
+ })
+
+
