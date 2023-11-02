@@ -399,19 +399,3 @@ p {
   
  }
 
- /* FOOTER */
-
- footer {
-    height: 5vh;
-    background: #91929260;
-    color: rgba(0, 0, 0, 0.381);
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 0.5em
- }
-
- .copyright {
-    font-size: 0.7rem;
- }
