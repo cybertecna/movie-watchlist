@@ -6,6 +6,14 @@ const exploreMovies = document.querySelector('#explore')
 let html = []
 const errorPopUp = document.querySelector('#pop-up')
 const watchlistArray = []
+let localStorageWatchlist = JSON.parse(localStorage.getItem('watchlist'))
+
+if(JSON.parse(localStorage.getItem('watchlist'))) {
+    for(const title in localStorageWatchlist) {
+        watchlistArray.push(JSON.stringify(`${localStorageWatchlist[title]}`))
+        }
+}
+
 
 searchForm.addEventListener('submit', function(e) {
     e.preventDefault()
