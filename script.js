@@ -3,11 +3,9 @@ const userInput = document.querySelector("#user-input")
 const searchForm = document.querySelector("#search-form")
 const searchedMovies = document.querySelector("#searched-movies")
 const exploreMovies = document.querySelector("#explore")
-const html = []
+let html = []
 const errorPopUp = document.querySelector("#pop-up")
 const watchlistArray = []
-const userWatchlist = document.querySelector('#user-movielist')
-const watchlistHtml = []
 
 searchForm.addEventListener('submit', function(e) {
     e.preventDefault()
@@ -24,9 +22,9 @@ async function searchMovies() {
     
     } else if(moviesArray) {
         exploreMovies.style.display="none"
+        html = []
         for(let movie of moviesArray.Search) {
             generateMovies(movie.Title)
-    
         }
     }
 
@@ -65,7 +63,6 @@ function generateMovies(movieTitle) {
 
 }
 
-
 document.addEventListener('click', function(){
         errorPopUp.style.display = 'none'
  })
@@ -73,8 +70,10 @@ document.addEventListener('click', function(){
 document.addEventListener('click', function(e) {
     if(e.target.dataset.title) {
         watchlistArray.push(e.target.dataset.title)
-        localStorage.setItem('watchlist',JSON.stringify( watchlistArray))
+        localStorage.setItem('watchlist',JSON.stringify(watchlistArray))
 
     }
 })
+
+
 
