@@ -5,7 +5,9 @@ const searchedMovies = document.querySelector("#searched-movies")
 const exploreMovies = document.querySelector("#explore")
 const html = []
 const errorPopUp = document.querySelector("#pop-up")
-
+const watchlistArray = []
+const userWatchlist = document.querySelector('#user-movielist')
+const watchlistHtml = []
 
 searchForm.addEventListener('submit', function(e) {
     e.preventDefault()
@@ -23,15 +25,15 @@ async function searchMovies() {
     } else if(moviesArray) {
         exploreMovies.style.display="none"
         for(let movie of moviesArray.Search) {
-            generateMovies(movie)
+            generateMovies(movie.Title)
     
         }
     }
 
 }
 
-function generateMovies(movie) {
-    fetch(`http://www.omdbapi.com/?apikey=7288476a&t=${movie.Title}&type=movie&plot=short&r=json`)
+function generateMovies(movieTitle) {
+    fetch(`http://www.omdbapi.com/?apikey=7288476a&t=${movieTitle}&type=movie&plot=short&r=json`)
     .then(res => res.json())
     .then(movieData => {
         html.push(`   
@@ -40,10 +42,10 @@ function generateMovies(movie) {
                 <div class="movie-info">
                     <h2 class="movie-title">${movieData.Title} <span class="rating"><img src='./images/star.png' class='star'>
                     ${movieData.imdbRating}</span></h2>
-                    <div class='runtime-genre-watchlist'>
+                    <div class='runtime-genre-watchlist''>
                         <p><i>${movieData.Runtime}</i></p>
                         <p>${movieData.Genre}</p>
-                        <p class="add-to-watchlist"><img src='./images/plus-symbol-button.png' class='add-btn'> Add to watchlist</p>
+                        <p class="add-to-watchlist" data-title='${movieData.Title}'><img src='./images/plus-symbol-button.png' class='add-btn'> Add to watchlist</p>
                     </div>
                     <p>${movieData.Plot}</p>
                     <p class="additional-info">Directed by: <i>${movieData.Director}</i><br>
@@ -68,4 +70,11 @@ document.addEventListener('click', function(){
         errorPopUp.style.display = 'none'
  })
 
+document.addEventListener('click', function(e) {
+    if(e.target.dataset.title) {
+        watchlistArray.push(e.target.dataset.title)
+        localStorage.setItem('watchlist',JSON.stringify( watchlistArray))
+
+    }
+})
 
