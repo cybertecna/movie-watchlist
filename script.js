@@ -18,20 +18,24 @@ async function search() {
     const response = await fetch(`http://www.omdbapi.com/?apikey=7288476a&s=${userInput.value}&type=movie&r=json`)
     const moviesArray = await response.json()
     explorePage.style.display="none"
-    for(let movie of moviesArray.Search) {
+
+    if(moviesArray.Error) {
+        alert("There are too many results, please be more specific :)")
+    
+    } else if(moviesArray) {
+        for(let movie of moviesArray.Search) {
             generateMovies(movie)
     
         }
-    
     }
 
-   
+}
+
 
 function generateMovies(movie) {
     fetch(`http://www.omdbapi.com/?apikey=7288476a&t=${movie.Title}&type=movie&plot=short&r=json`)
     .then(res => res.json())
     .then(movieData => {
-        console.log(movieData)
         html.push(
             
 `           <div class="movie-data">
