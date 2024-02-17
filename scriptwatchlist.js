@@ -9,10 +9,23 @@ if (localStorageWatchlist) {
 }
 
 function renderWatchlist(){
-    for(const title in localStorageWatchlist) {
-        generateWatchlist(`${localStorageWatchlist[title]}`)
-        }
+    localStorageWatchlist = JSON.parse(localStorage.getItem('watchlist'))
+    if (localStorageWatchlist.length > 0) {
+        for(const title in localStorageWatchlist) {
+            generateWatchlist(`${localStorageWatchlist[title]}`)
+            }
+    } else {
+        userWatchlist.innerHTML = `
+                <div class="explore" id="explore" >
+                    <img src="./images/cameraroll.png" class="cameraroll" alt="An icon of a camera roll">
+                    <p class="explore">Start exploring!</p>
+                </div>
+                `
+    }
+    
 }
+
+console.log(localStorageWatchlist)
 
 function generateWatchlist(movieTitle) {
         watchlistHtml = []
@@ -29,6 +42,8 @@ function generateWatchlist(movieTitle) {
                         <div class='runtime-genre-watchlist''>
                             <p><i>${movieData.Runtime}</i></p>
                             <p>${movieData.Genre}</p>
+                            <p class='add-to-watchlist' id ='${movieData.imdbID}' data-title='${movieData.Title}'>
+                            <img src='./images/remove.png' class='icon icon-remove' alt='A plus symbol icon'>Remove from the watchlist</p>
                         </div>
                         <p>${movieData.Plot}</p>
                         <p class='additional-info'>Directed by: <i>${movieData.Director}</i><br>
@@ -42,7 +57,37 @@ function generateWatchlist(movieTitle) {
     `
             )
         })
-        .then(() => userWatchlist.innerHTML = watchlistHtml.join('') )
+        .then(() => {
+                userWatchlist.innerHTML = watchlistHtml.join('') 
+            
+        })
     
     }
+
+
+
+    document.addEventListener('click', function(e) {
+        if(e.target.dataset.title) {
+            console.log(localStorageWatchlist)
+        const filteredArray = localStorageWatchlist.filter(function(movie){
+
+                if (movie === e.target.dataset.title){
+
+                    return false
+                }
+                else {
+                    return true
+                }
+            }) 
+
+        localStorage.clear()
+        localStorage.setItem('watchlist',JSON.stringify(filteredArray))
+
+        renderWatchlist()
+
+
+        }
+
+    })
+    
     
