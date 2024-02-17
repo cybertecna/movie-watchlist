@@ -10,9 +10,11 @@ let localStorageWatchlist = JSON.parse(localStorage.getItem('watchlist'))
 
 if(JSON.parse(localStorage.getItem('watchlist'))) {
     for(const title in localStorageWatchlist) {
-        watchlistArray.push(JSON.stringify(`${localStorageWatchlist[title]}`))
+        console.log(localStorageWatchlist[title])
+        watchlistArray.push(localStorageWatchlist[title])
         }
 }
+
 
 
 searchForm.addEventListener('submit', function(e) {
@@ -42,6 +44,7 @@ function generateMovies(movieTitle) {
     fetch(`http://www.omdbapi.com/?apikey=7288476a&t=${movieTitle}&type=movie&plot=short&r=json`)
     .then(res => res.json())
     .then(movieData => {
+        if (movieData.Poster && movieData.Poster != 'N/A') {
         html.push(`   
             <div class='movie-data'>
                 <img src=${movieData.Poster} class='poster' alt='Official poster of the movie ${movieData.Title}'>
@@ -69,8 +72,26 @@ function generateMovies(movieTitle) {
             </div>
 `
         )
+
+        }
     })
-    .then(() => searchedMovies.innerHTML = html.join('') )
+    .then(() => {
+        if (html.length > 0) {
+            searchedMovies.innerHTML = html.join('') 
+        }
+        
+        else {
+            
+            searchedMovies.innerHTML = `
+            <div class="explore" id="explore" >
+                <img src="./images/sad-face.png" class="sad-face" alt="A picture of a sad face">
+                <p class="explore">Sorry, we could not find any movies that match your criteria, please try again!</p>
+            </div>
+            `
+
+        }
+    })
+    
 
 }
 
@@ -81,6 +102,7 @@ document.addEventListener('click', function(){
 document.addEventListener('click', function(e) {
     if(e.target.dataset.title) {
         watchlistArray.push(e.target.dataset.title)
+        console.log(watchlistArray)
         localStorage.setItem('watchlist',JSON.stringify(watchlistArray))
         console.log(e.target.id)
         document.getElementById(e.target.id).innerHTML = `<p class='added-to-the-watchlist'>

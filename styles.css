@@ -148,17 +148,25 @@ input {
    text-align: center;
    color: rgb(57, 56, 56);
    font-size: 1.1rem;
+   margin: 1em;
 
 }
 
 .cameraroll {
-    margin-top: 7.5em;
+    margin-top: 6.5em;
     width: 100px;
     opacity: 90%;
 }
 
 .cameraroll-explore {
     margin-top: 10em;
+}
+
+.sad-face {
+    opacity: 95%;
+    width: 70px;
+    margin-top: 6.5em;
+
 }
 
 
@@ -177,9 +185,14 @@ input {
     font-size: 1.35rem;
    }
 
-   .cameraroll-explore {
-    margin-top: 8.5em;
+   .cameraroll-explore,
+   .cameraroll {
+    margin-top: 5.5em;
 }
+    .sad-face  {
+        margin-top: 5.5em;
+        width: 80px;
+    }
 }
 
 /* MOVIE  */
@@ -227,6 +240,9 @@ p {
     width: 9px;
 }
 
+.icon-remove {
+    margin-right: 0.2em;
+}
 .plot {
     color: rgb(40, 40, 40);
 }
